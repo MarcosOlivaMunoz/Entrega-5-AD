@@ -12,6 +12,12 @@ fviz_eig(datos.acp, addlabels = TRUE, ylim=c(0,100))
 #Observamos que entre las 4 primeras hacen el 85.65% 
 fviz_pca_var(datos.acp, col.var = "contrib",
              repel = TRUE) 
+
+fviz_pca_biplot(datos.acp, repel = TRUE,
+                col.var = "#2E9FDF", # color para las variables
+                col.ind = "#696969"  # color para las observaciones
+)
+
 library("ggfortify")
 autoplot(datos.acp, data = datos,
          loadings = TRUE,
