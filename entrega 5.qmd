@@ -1,0 +1,56 @@
+---
+title: "Entrega 5"
+author:
+  - "Marcos Oliva"
+  - "Hugo García"
+date: 23/11/2023
+format: html
+embed-resources: true
+lang: ES
+---
+
+```{r Setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+library(ggplot2)
+library("factoextra")
+library("ggfortify")
+```
+
+Creamos las lamdas:
+
+```{r}
+datos.acp=prcomp(datos, scale = TRUE)
+lambdas=get_eigenvalue(datos.acp)
+lambdas
+```
+
+Creamos el primer gráfico para ver los porcentajes:
+
+```{r}
+fviz_eig(datos.acp, addlabels = TRUE, ylim=c(0,100))
+```
+
+Observamos que entre las 3 primeras hacen el 74.6%
+
+```{r}
+fviz_pca_var(datos.acp, col.var = "contrib",
+             repel = TRUE) 
+```
+
+Notamos que la agricultura se trata de la única variable que apunta en dirección contraria del resto.
+
+```{r}
+fviz_pca_biplot(datos.acp, repel = TRUE,
+                col.var = "#2E9FDF", # color para las variables
+                col.ind = "#696969"  # color para las observaciones
+)
+```
+
+Remarcamos Yugoslavia y Turquía que destacan por su posición a la derecha. Esto es debido a que la industria agraria es la principal en estos paises.
+
+```{r}
+autoplot(datos.acp, data = datos,  
+         loadings = TRUE,
+         loadings.label = TRUE)
+
+```
