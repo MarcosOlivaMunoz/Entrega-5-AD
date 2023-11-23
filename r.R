@@ -19,6 +19,6 @@ fviz_pca_biplot(datos.acp, repel = TRUE,
 )
 
 library("ggfortify")
-autoplot(datos.acp, data = datos,
+autoplot(datos.acp, data = datos,  
          loadings = TRUE,
          loadings.label = TRUE)
