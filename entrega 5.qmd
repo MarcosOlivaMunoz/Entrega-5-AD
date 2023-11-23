@@ -46,7 +46,7 @@ fviz_pca_biplot(datos.acp, repel = TRUE,
 )
 ```
 
-Remarcamos Yugoslavia y Turquía que destacan por su posición a la derecha. Esto es debido a que la industria agraria es la principal en estos paises.
+Remarcamos Yugoslavia y Turquía que destacan por su posición a la derecha. Esto es debido a que la industria agraria es la principal en estos países.
 
 ```{r}
 autoplot(datos.acp, data = datos,  
