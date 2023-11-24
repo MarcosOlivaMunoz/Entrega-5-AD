@@ -26,6 +26,7 @@ fviz_pca_var(datos.acp, col.var = "contrib", axes = c(1, 3),
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE)
 
+<<<<<<< HEAD
 fviz_pca_biplot(datos.acp, repel = TRUE, axes = c(1, 3),
                 col.var = "#Fc4E07", # color para las variables
                 col.ind = "#EEEEEE"  # color para las observaciones
@@ -52,3 +53,9 @@ fviz_pca_biplot(datos2.acp, repel = TRUE,
                 col.var = "#Fc4E07", # color para las variables
                 col.ind = "#EEEEEE"  # color para las observaciones
 ) + theme_dark()
+=======
+library("ggfortify")
+autoplot(datos.acp, data = datos,  
+         loadings = TRUE,
+         loadings.label = TRUE)
+>>>>>>> 644db8a3777be2aa69f91ee2b8cf4c65a29c0484
