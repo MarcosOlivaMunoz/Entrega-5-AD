@@ -37,7 +37,7 @@ fviz_pca_var(datos.acp, col.var = "contrib",
              repel = TRUE) 
 ```
 
-Notamos que la agricultura se trata de la única variable con una alta dimensión pricipal 1 debido a la longitud y posición de la flecha. Mientras que la minería y las finanzas tienen una una dimensión principal baja. El resto de variables son semejantes en cuanto a su valor negativo de la variable principal 1.
+Notamos que la agricultura se trata de la única variable con una alta dimensión pricipal 1 debido a la longitud y posición de la flecha. Mientras que la industria de servicio y servicios sociales y personales tienen una una dimensión principal baja. El resto de variables son semejantes en cuanto a su valor negativo de la variable principal 1.
 
 En cuanto a la dimensión principal 2 observamos que todas las variables están distribuidas de cierta manera uniforme siendo las finanzas la variable con el valor más negativo y la minería con el más alto
 
@@ -87,7 +87,9 @@ fviz_pca_biplot(datos.acp, repel = TRUE, axes = c(2, 3),
 
 ```
 
-En estos gráficos nos encontramos lo mismo comentado en los gráficos anteriores. en cuanto a la dimensión 2 en los paises del norte de Europa es negativa, en Europa central y sur es cercana a 0 y en Europa del este positiva. Y ninguna correlación clara entre paises en cuanto a la dimensión 3
+En estos gráficos nos encontramos lo mismo comentado en los gráficos anteriores. en cuanto a la dimensión 2 en los paises del norte de Europa es negativa, en Europa central y sur es cercana a 0 y en Europa del este positiva. Y ninguna correlación clara entre paises en cuanto a la dimensión 3.
+
+Además hemos decido eliminar los datos más extremos para obtener los siguientes gráficos:
 
 ```{r}
 datos2 = datos %>% arrange(Agr) %>% .[1:24,]
@@ -103,3 +105,5 @@ fviz_pca_biplot(datos2.acp, repel = TRUE,
                 col.ind = "#EEEEEE"  # color para las observaciones
 ) + theme_dark()
 ```
+
+En esta ocasión vemos una mayor dispersión de loa datos. Los paises mediterráneos se encuentran en la parte superior de la gráfica, Los de Europa del este a la derecha y los nórdicos a la izquierda.
