@@ -52,5 +52,54 @@ Observamos una gran acumulación de los paises nórdico y del norte de europa co
 
 Los paises del sur de Europa están caracterizados por su cercaní al 0 en ambas dimensiones principales. por último remarcamos Yugoslavia y Turquía que destacan por su posición a la derecha. Esto es debido a que la industria agraria es la principal en estos países.
 
-```{}
+Realizamos ahora el estudio de las componentes 1 y 3:
+
+```{r}
+fviz_pca_var(datos.acp, col.var = "contrib", axes = c(1, 3),
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE)
+
+
+fviz_pca_biplot(datos.acp, repel = TRUE, axes = c(1, 3),
+                col.var = "#Fc4E07", # color para las variables
+                col.ind = "#EEEEEE"  # color para las observaciones
+) + theme_dark()
+
+```
+
+Observamos que en cuanto a la dimensión principal 3 los datos están más centrados que respecto a las otras dos dimensiones. Transporte y Comunicaciones junto con Servicios sociales y personales encabezan en valor positivo de Dimensión 3 mientras que finanzas y sumisnistro eléctrico cuentan con el valor más negativo.
+
+No parece haber ninguna correlación clara entre la distribución de paises. la excepción es Yugoslavia con un valor muy negativo.
+
+Continuaremos con el gráfico de las dimensiones 2 y 3:
+
+```{r}
+#2,3
+fviz_pca_var(datos.acp, col.var = "contrib", axes = c(2, 3),
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE)
+
+fviz_pca_biplot(datos.acp, repel = TRUE, axes = c(2, 3),
+                col.var = "#Fc4E07", # color para las variables
+                col.ind = "#EEEEEE"  # color para las observaciones
+) + theme_dark()
+
+
+```
+
+En estos gráficos nos encontramos lo mismo comentado en los gráficos anteriores. en cuanto a la dimensión 2 en los paises del norte de Europa es negativa, en Europa central y sur es cercana a 0 y en Europa del este positiva. Y ninguna correlación clara entre paises en cuanto a la dimensión 3
+
+```{r}
+datos2 = datos %>% arrange(Agr) %>% .[1:24,]
+datos2.acp=prcomp(datos2, scale = TRUE)
+fviz_eig(datos2.acp, addlabels = TRUE, ylim=c(0,100))
+
+fviz_pca_var(datos2.acp, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE)
+
+fviz_pca_biplot(datos2.acp, repel = TRUE,
+                col.var = "#Fc4E07", # color para las variables
+                col.ind = "#EEEEEE"  # color para las observaciones
+) + theme_dark()
 ```
